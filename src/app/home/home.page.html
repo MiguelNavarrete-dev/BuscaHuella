@@ -1,20 +1,59 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-menu-bar></app-menu-bar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+      <ion-title id="TitlePrincipal">Hola, [Tu Nombre]</ion-title>
+
+      <ion-avatar slot="end" id="AvatarProfile">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <ion-content [fullscreen]="true">
+    <div class="main-container">
+      <ion-button class="Emergencia" expand="block" shape="round" >
+        ¡Ayuda, perdí a mi mascota!
+      </ion-button>
+    </div>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          Reportes recientes
+        </ion-label>
+      </ion-list-header>
+      
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Mascota de prueba</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Vista por última vez hace 5 min.
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Tip Mascota</ion-card-title>
+          <ion-card-subtitle>¿Tu mascota tiene chip?</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          Según la ley deberia.
+        </ion-card-content>
+
+        <ion-button fill="clear">Si</ion-button>
+        <ion-button fill="clear">No, dame mas info</ion-button>
+      </ion-card>
+    </ion-list>
+  </ion-content>
+
+  <app-footer></app-footer>
+</div>

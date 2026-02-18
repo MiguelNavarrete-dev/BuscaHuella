@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <ion-img src="assets/image/BuscaHuellaLogo.png" class="logo-register"></ion-img>
+    <ion-card>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-input
+              fill="solid"
+              label="Nombre Completo"
+              labelPlacement="floating"
+              helperText="Entre su nombre completo"
+              ngModel
+            ></ion-input>
+          </ion-item>
+
+          <br />
+          <ion-item>
+            <ion-input
+              type="email"
+              fill="solid"
+              label="Email"
+              labelPlacement="floating"
+              helperText="Enter a valid email"
+              errorText="Invalid email"
+              ngModel
+              email
+            ></ion-input>
+          </ion-item>
+          <br />
+          <ion-item>
+            <ion-input
+              type="password"
+              fill="solid"
+              label="contraseña"
+              labelPlacement="floating"
+              helperText="Entre una contraseña valida"
+              errorText="Invalid email"
+              ngModel
+            ></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" (click)="onRegister()">
+            Registrarse
+          </ion-button>
+
+          <ion-button fill="clear" expand="block">
+            ¿Ya tienes cuenta? Inicia sesión 
+          </ion-button>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

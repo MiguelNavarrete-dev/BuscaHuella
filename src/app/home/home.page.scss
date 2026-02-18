@@ -1,11 +1,8 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 29vh;
 }
 
 #container strong {
@@ -24,4 +21,29 @@
 
 #container a {
   text-decoration: none;
+}
+
+#AvatarProfile{
+  position: relative;
+  width: 12%;
+  height: 45px;
+  right: 15px; 
+}
+
+#TitlePrincipal{
+  text-align: center;
+}
+
+.Emergencia {
+  position: relative;
+  --background: #ff8500; /* Naranja Buscahuella */
+  width: 87%;            /* Para que no toque los bordes */
+  height: 56px;         /* Para que sea un botón imponente */
+  left: 15px;         
+  font-weight: bold;
+}
+
+#Imgtext{
+  width: 231px;
+  height: 112px;
 }
