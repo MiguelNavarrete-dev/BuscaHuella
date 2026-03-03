@@ -8,11 +8,20 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
 
-      <ion-title id="TitlePrincipal">Hola, [Tu Nombre]</ion-title>
+      <ion-title id="TitlePrincipal">Hola {{ nombreCompleto }} </ion-title>
 
-      <ion-avatar slot="end" id="AvatarProfile">
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
+      
+        <ion-avatar slot="end" id="AvatarProfile">
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+      <ion-popover #popover [showBackdrop]="true" trigger="AvatarProfile">
+        <ng-template>
+            <ion-list>
+              <ion-item>Perfil</ion-item>
+              <ion-item>Cerrar Sesión</ion-item>
+            </ion-list>
+        </ng-template>
+      </ion-popover>
     </ion-toolbar>
   </ion-header>
 

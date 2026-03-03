@@ -9,51 +9,60 @@
     <ion-img src="assets/image/BuscaHuellaLogo.png" class="logo-register"></ion-img>
     <ion-card>
       <ion-card-content>
-        <ion-list>
+      <form #registroForm="ngForm"> <ion-list>
           <ion-item>
             <ion-input
+              label="Nombre Completo" 
+              name="nombre" 
               fill="solid"
-              label="Nombre Completo"
               labelPlacement="floating"
-              helperText="Entre su nombre completo"
+              placeholder="Ej: Juan Pérez"
               ngModel
-            ></ion-input>
+              required> </ion-input>
           </ion-item>
 
           <br />
           <ion-item>
             <ion-input
               type="email"
-              fill="solid"
               label="Email"
+              name="email"
+              fill="solid"
               labelPlacement="floating"
-              helperText="Enter a valid email"
-              errorText="Invalid email"
+              placeholder="nombre@correo.com"
+              required
               ngModel
-              email
-            ></ion-input>
+              email>
+            </ion-input>
           </ion-item>
+
           <br />
           <ion-item>
             <ion-input
               type="password"
+              label="Contraseña"
+              name="password"
               fill="solid"
-              label="contraseña"
               labelPlacement="floating"
-              helperText="Entre una contraseña valida"
-              errorText="Invalid email"
-              ngModel
-            ></ion-input>
+              helperText="Mínimo 6 caracteres"
+              required
+              ngModel>
+            </ion-input>
           </ion-item>
 
-          <ion-button expand="block" (click)="onRegister()">
+          <ion-button 
+            expand="block" 
+            (click)="onRegister()" 
+            [disabled]="!registroForm.valid"
+            [color]="registroForm.valid ? 'success' : 'danger'">
             Registrarse
           </ion-button>
 
-          <ion-button fill="clear" expand="block">
+          <ion-button fill="clear" expand="block" (click)="goToLogin()">
             ¿Ya tienes cuenta? Inicia sesión 
           </ion-button>
         </ion-list>
+      </form>
       </ion-card-content>
     </ion-card>
   </div>

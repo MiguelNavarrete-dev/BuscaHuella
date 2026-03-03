@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="header-container" style="text-align: center; margin-bottom: 20px;">
+    <ion-avatar style="width: 100px; height: 100px; margin: 0 auto;">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+    <h1>{{ userData.nombreCompleto }}</h1>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Nombre Completo</ion-label>
+      <ion-input [value]="userData.nombreCompleto" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Correo Electrónico</ion-label>
+      <ion-input [value]="userData.email" readonly></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
