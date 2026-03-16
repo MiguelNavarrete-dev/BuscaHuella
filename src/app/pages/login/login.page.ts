@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth';
 
 import { AlertController } from '@ionic/angular/standalone';
+import { user } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-login',
@@ -15,11 +17,12 @@ import { AlertController } from '@ionic/angular/standalone';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonImg, IonCard, IonItem, IonList, IonCardContent, IonCardTitle, IonButton, IonInput]
 })
 export class LoginPage implements OnInit {
-  
+  verificado: boolean = false;
+
 
   constructor(private router: Router, private authService: AuthService, private alertController: AlertController) { }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
   @ViewChild('loginForm') loginForm!: NgForm;
@@ -28,14 +31,29 @@ export class LoginPage implements OnInit {
     const { email, password } = this.loginForm.value;
 
     this.authService.loginUser(email, password)
-      .then((res) => {
+      .then(async (res) => {
         // 1. Si llegamos aquí, las credenciales son correctas
         console.log('Login exitoso', res);
-
-        // 2. Navegamos al Home
-        // Asegúrate de que 'home' coincida con el path en app.routes.ts
-        this.router.navigate(['/home']);
-        this.loginForm.reset(); 
+      
+        // Verificar si el email ha sido verificado
+        if (res.user.emailVerified) {
+          this.verificado = true;
+          this.router.navigate(['/home']);
+          this.loginForm.reset();
+        } else {
+            this.verificado = false;
+            const alerta = await this.alertController.create({
+              header: 'Email no verificado',
+              message: '¿No recibiste el link? Revisa tu carpeta de spam o solicita uno nuevo.',
+              buttons: [
+                {
+                  text: 'Cancelar',
+                  role: 'cancel'
+                }
+              ]
+            });
+            await alerta.present();
+          }
       })
       .catch(async (error) => {
         // 3. Si falla (clave mal escrita, etc.), mostramos la alerta de Ionic
@@ -52,5 +70,7 @@ export class LoginPage implements OnInit {
     // Aquí lo mandamos a la página de registro
     this.router.navigateByUrl('/register');
   }
+
+ 
 
 }

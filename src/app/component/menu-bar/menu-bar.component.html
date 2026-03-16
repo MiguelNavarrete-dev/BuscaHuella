@@ -1,4 +1,4 @@
-<ion-menu contentId="main-content">
+<ion-menu contentId="principal">
   <ion-header>
     <ion-toolbar>
       <ion-img src="assets/image/BuscaHuellaImagenes.png" id="Imgtext"></ion-img>
@@ -6,7 +6,27 @@
   </ion-header>
   <ion-content class="ion-padding">
     <ion-img src="assets/image/BuscaHuellaLogo.png"></ion-img>
-    <ion-title>hola</ion-title>
+    <ion-menu-toggle auto-hide="false">
+        <ion-button (click)="goToHome()" shape="round" expand="block" class="listButton">
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          INICIO
+        </ion-button>
+        
+        <ion-button (click)="goToMapa()" shape="round" expand="block" class="listButton">
+          <ion-icon slot="start" name="map-outline"></ion-icon>
+          Mapa de busqueda
+        </ion-button>
+
+        <ion-button routerLink="/veterinarias" shape="round" expand="block" class="listButton">
+          <ion-icon slot="start" name="medkit-outline"></ion-icon>
+          VETERINARIAS 24 HORAS
+        </ion-button>
+
+        <ion-button routerLink="/guia-cuidados" shape="round" expand="block" class="listButton">
+          <ion-icon slot="start" name="bandage-outline"></ion-icon>
+          GUIA DE CUIDADOS
+        </ion-button>
+    </ion-menu-toggle>
   </ion-content>
 </ion-menu>
 

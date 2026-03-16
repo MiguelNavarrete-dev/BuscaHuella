@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Registro de Mascotas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-title class="titlesGestion">Registrar Mascota</ion-title>
+  <div class="gestion-container">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nombre de la mascota</ion-label>
+        <ion-input type="text" labelPlacement="floating" placeholder="Ej: Firulais o 'Desconocido'" [(ngModel)]="nuevaMascota.nombre" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-textarea [(ngModel)]="nuevaMascota.descripcion" required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de mascota</ion-label>
+        <ion-select placeholder="Selecciona el tipo" [(ngModel)]="nuevaMascota.tipo" required>
+          <ion-select-option value="perro">Perro</ion-select-option>
+          <ion-select-option value="gato">Gato</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="ion-text-center ion-padding">
+        <div *ngIf="nuevaMascota.imagen" class="image-preview">
+          <img [src]="nuevaMascota.imagen" style="max-height: 200px; border-radius: 15px; margin-bottom: 10px;" />
+        </div>
+        
+        <ion-button fill="outline" (click)="elegirImagen()">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          {{ nuevaMascota.imagen ? 'Cambiar Foto' : 'Añadir Foto' }}
+        </ion-button>
+      </div>
+
+      <ion-button expand="block" shape="round" class="save-button" (click)="guardarMascota()">
+        Guardar
+      </ion-button>
+    </ion-list>
+  </div>
+  <ion-item-divider mode="md">
+    <ion-label>Mascotas Registradas</ion-label>
+  </ion-item-divider>
+
+  <ion-list>
+    <ion-item *ngFor="let mascota of mascotas">
+      <ion-avatar slot="start">
+        <img [src]="mascota.imagen || 'https://placehold.co/100x100?text=🐾'" />
+      </ion-avatar>
+      
+      <ion-label>
+        <h2>{{ mascota.nombre || 'Sin nombre / Desconocido' }}</h2>
+        <p>{{ mascota.descripcion || 'Sin descripción' }}</p>
+        <p>{{ mascota.tipo || 'Sin tipo' }}</p>
+      </ion-label>
+
+      <ion-button slot="end" fill="clear" color="danger" (click)="eliminarMascota(mascota.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear" color="primary" (click)="abrirEditar(mascota)">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+  
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input [(ngModel)]="mascotaAEditar.nombre" type="text"></ion-input>
+        </ion-item>
+        <ion-button expand="block" shape="round" class="save-button" (click)="guardarCambios()">
+          Guardar Cambios
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajustes de Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="login-container">
+      <ion-card>
+        <ion-card-content>
+          <form #configProfileForm="ngForm"> 
+            <ion-list>              
+              <ion-item>
+                <ion-input
+                  label="Direccion" 
+                  name="direccion" 
+                  fill="solid"
+                  labelPlacement="floating"
+                  placeholder="calle falsa #123"
+                  ngModel
+                  required> 
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                  label="Telefono" 
+                  type="tel"
+                  name="telefono" 
+                  fill="solid"
+                  labelPlacement="floating"
+                  placeholder="+56912345678"
+                  ngModel
+                  required> 
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                  label="comuna" 
+                  name="comuna" 
+                  fill="solid"
+                  labelPlacement="floating"
+                  placeholder="Comuna"
+                  ngModel
+                  required> 
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                  label="Bio" 
+                  name="bio" 
+                  fill="solid"
+                  labelPlacement="floating"
+                  placeholder="Cuéntanos sobre ti..."
+                  ngModel
+                  required> 
+                </ion-input>
+              </ion-item>
+                
+              <ion-button 
+                expand="block" 
+                (click)="guardarDatosExtra()" 
+                [disabled]="!configProfileForm.valid"
+                [color]="configProfileForm.valid ? 'success' : 'danger'">
+                Guardar Datos
+              </ion-button>
+            </ion-list>
+          </form>
+          <ion-button expand="block" (click)="editarPerfil()" style="margin-top: 20px;">
+            Editar Perfil
+          </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

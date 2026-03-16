@@ -9,7 +9,11 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
 const app = initializeApp(environment.firebaseConfig);
+
+defineCustomElements(window);
 
 bootstrapApplication(AppComponent, {
   providers: [

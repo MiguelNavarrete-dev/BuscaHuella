@@ -20,6 +20,18 @@ export const routes: Routes = [
   {
     path: 'profile',
     loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
+  },
+  {
+    path: 'profille-configuration',
+    loadComponent: () => import('./profille-configuration/profille-configuration.page').then( m => m.ProfilleConfigurationPage)
+  },
+  {
+    path: 'mapa-busqueda',
+    loadComponent: () => import('./pages/mapa-busqueda/mapa-busqueda.page').then( m => m.MapaBusquedaPage)
+  },
+  {
+    path: 'gestion-mascotas',
+    loadComponent: () => import('./pages/gestion-mascotas/gestion-mascotas.page').then( m => m.GestionMascotasPage)
   }
 
 ];

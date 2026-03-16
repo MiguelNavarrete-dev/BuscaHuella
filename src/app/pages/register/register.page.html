@@ -4,65 +4,76 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="login-container">
-    <ion-img src="assets/image/BuscaHuellaLogo.png" class="logo-register"></ion-img>
-    <ion-card>
-      <ion-card-content>
-      <form #registroForm="ngForm"> <ion-list>
-          <ion-item>
-            <ion-input
-              label="Nombre Completo" 
-              name="nombre" 
-              fill="solid"
-              labelPlacement="floating"
-              placeholder="Ej: Juan Pérez"
-              ngModel
-              required> </ion-input>
-          </ion-item>
+  <ion-content [fullscreen]="true">
+    <div class="login-container">
+      <ion-img src="assets/image/BuscaHuellaLogo.png" class="logo-register"></ion-img>
+      <ion-card>
+        <ion-card-content>
+        <form #registroForm="ngForm"> <ion-list>
+            <ion-item>Elegir Avatar</ion-item>
+            <div class="avatar-selector" style="display: flex; overflow-x: auto; padding: 10px;" name="fotoPerfil" ngModel required>
+              @for (img of avatares; track img) {
+                <ion-avatar 
+                  (click)="seleccionar(img)" 
+                  [style.border]="avatarSeleccionado === img ? '3px solid var(--ion-color-primary)' : 'none'"
+                  style="margin: 5px; cursor: pointer; flex-shrink: 0;">
+                  <img [src]="img" />
+                </ion-avatar>
+              }
+            </div>
+            <ion-item>
+              <ion-input
+                label="Nombre Completo" 
+                name="nombre" 
+                fill="solid"
+                labelPlacement="floating"
+                placeholder="Ej: Juan Pérez"
+                ngModel
+                required> </ion-input>
+            </ion-item>
 
-          <br />
-          <ion-item>
-            <ion-input
-              type="email"
-              label="Email"
-              name="email"
-              fill="solid"
-              labelPlacement="floating"
-              placeholder="nombre@correo.com"
-              required
-              ngModel
-              email>
-            </ion-input>
-          </ion-item>
+            <br />
+            <ion-item>
+              <ion-input
+                type="email"
+                label="Email"
+                name="email"
+                fill="solid"
+                labelPlacement="floating"
+                placeholder="nombre@correo.com"
+                required
+                ngModel
+                email>
+              </ion-input>
+            </ion-item>
 
-          <br />
-          <ion-item>
-            <ion-input
-              type="password"
-              label="Contraseña"
-              name="password"
-              fill="solid"
-              labelPlacement="floating"
-              helperText="Mínimo 6 caracteres"
-              required
-              ngModel>
-            </ion-input>
-          </ion-item>
+            <br />
+            <ion-item>
+              <ion-input
+                type="password"
+                label="Contraseña"
+                name="password"
+                fill="solid"
+                labelPlacement="floating"
+                helperText="Mínimo 6 caracteres"
+                required
+                ngModel>
+              </ion-input>
+            </ion-item>
 
-          <ion-button 
-            expand="block" 
-            (click)="onRegister()" 
-            [disabled]="!registroForm.valid"
-            [color]="registroForm.valid ? 'success' : 'danger'">
-            Registrarse
-          </ion-button>
+            <ion-button 
+              expand="block" 
+              (click)="onRegister()" 
+              [disabled]="!registroForm.valid"
+              [color]="registroForm.valid ? 'success' : 'danger'">
+              Registrarse
+            </ion-button>
 
-          <ion-button fill="clear" expand="block" (click)="goToLogin()">
-            ¿Ya tienes cuenta? Inicia sesión 
-          </ion-button>
-        </ion-list>
-      </form>
+            <ion-button fill="clear" expand="block" (click)="goToLogin()">
+              ¿Ya tienes cuenta? Inicia sesión 
+            </ion-button>
+          </ion-list>
+        </form>
       </ion-card-content>
     </ion-card>
   </div>
